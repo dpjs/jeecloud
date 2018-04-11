@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>jeecloud智能云平台</title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<!-- layui -->
+<link rel="stylesheet" href="${request.contextPath}/plugin/layui/css/layui.css">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+<!-- Google Font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="stylesheet" type="text/css" href="${request.contextPath}/static/css/style.css">
+</head>
+<body class="is-dialog">
+	<form action="" data-auto="true" data-ajax="true" class="layui-form layui-box fadeInUp animated">
+		<div class="layui-form-item">
+			<label class="layui-form-label">类型</label>
+			<div class="layui-input-block">
+		       <input type="radio" name="type" value="目录" title="目录" checked="checked">
+		       <input type="radio" name="type" value="菜单" title="菜单">
+		       <input type="radio" name="type" value="按钮" title="按钮">
+		    </div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">菜单名称</label>
+			<div class="layui-input-block">
+				<input type="text" name="name" required="required" title="请输入菜单名称" placeholder="请输入" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">上级菜单</label>
+			<div class="layui-input-block">
+				<input type="tel" name="phone" required="required" title="请输入菜单名称" placeholder="请输入" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">菜单URL</label>
+			<div class="layui-input-block">
+				<input type="text" name="url" placeholder="请输入" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">授权标识</label>
+			<div class="layui-input-block">
+				<input type="text" name="perms" required="required" title="请输入菜单名称" placeholder="多个用逗号分隔，如：user:list,user:create" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">排序号</label>
+			<div class="layui-input-block">
+				<input type="text" name="sort" required="required" title="请输入菜单名称" placeholder="请输入" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">图标</label>
+			<div class="layui-input-block">
+				<input type="text" id="icon" name="icon" placeholder="菜单图标" autocomplete="off" class="layui-input" style="width: 88%;float: left">
+				<button data-icon="icon" class="layui-btn layui-btn-primary layui-btn-sm" type="button" style="float:left;height: 34px;width: 12%">搜索图标</button>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">数据列(<a style="color: red;cursor: pointer;">添加</a>)</label>
+			<div class="layui-input-block">
+				<table class="layui-table">
+					<thead>
+						<tr>
+							<th lay-data="{field:'name', edit: 'text'}">列名称</th>
+					        <th lay-data="{field:'perms', edit: 'text'}">列标识</th>
+					        <th lay-data="{field:'sort', edit: 'text'}">排序号</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="layui-form-item hidden layer-footer">
+			<div class="layer-footer-button">
+				<button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="demo1">立即提交</button>
+				<button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+			</div>
+		</div>
+	</form>
+	<script src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
+	<script type="text/javascript" src="${request.contextPath}/static/js/app.js"></script>
+	<script type="text/javascript" src="${request.contextPath}/static/js/system/menu.js"></script>
+</body>
+</html>

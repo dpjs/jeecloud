@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <context id="context1">
+    <jdbcConnection connectionURL="jdbc:mysql://111.231.225.233:5186/jeecloud?useSSL=false" driverClass="com.mysql.jdbc.Driver" password="1qaz2wsx3edc" userId="jeebase" />
+    <javaModelGenerator targetPackage="com.jeecloud.common.entity" targetProject="jeecloud\src\main\java" />
+    <sqlMapGenerator targetPackage="mapper" targetProject="jeecloud/src/main/resources" />
+    <javaClientGenerator targetPackage="com.jeecloud.common.dao" targetProject="jeecloud\src\main\java" type="XMLMAPPER" />
+    <table schema="SysUser" tableName="sys_user" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+     
+    </table>
+  </context>
+</generatorConfiguration>

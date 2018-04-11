@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jeecloud.common.dao.system.SysUserDao">
+	<resultMap id="BaseResultMap" type="com.jeecloud.common.entity.system.SysUser">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="dept_id" jdbcType="BIGINT" property="deptId" />
+		<result column="company_id" jdbcType="BIGINT" property="companyId" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="password" jdbcType="VARCHAR" property="password" />
+		<result column="nickname" jdbcType="VARCHAR" property="nickname" />
+		<result column="email" jdbcType="VARCHAR" property="email" />
+		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+		<result column="status" jdbcType="TINYINT" property="status" />
+		<result column="type" jdbcType="TINYINT" property="type" />
+		<result column="is_admin" jdbcType="TINYINT" property="isAdmin" />
+		<result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+		<result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+		<result column="gmt_creater" jdbcType="VARCHAR" property="gmtCreater" />
+		<result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+		<result column="gmt_reviser" jdbcType="VARCHAR" property="gmtReviser" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, dept_id, company_id, username, password, nickname, email, mobile,
+		status, type,
+		is_admin, is_deleted, gmt_create, gmt_creater, gmt_modified, gmt_reviser
+	</sql>
+	<!-- 查询系统用户所有权限 -->
+	<select id="querySysAllPerms" parameterType="string" resultType="string">
+		select m.perms from sys_user_role ur
+		LEFT JOIN sys_role_menu rm on ur.role_id = rm.role_id
+		LEFT JOIN sys_menu m on rm.menu_id = m.id
+		where ur.is_deleted=0 and ur.user_id = #{userId}
+	</select>
+	<!-- 查询企业用户所有权限 -->
+	<select id="queryCompanyAllPerms" resultType="string">
+		select m.perms from sys_user_role ur
+		LEFT JOIN sys_role_menu rm on ur.role_id = rm.role_id
+		LEFT JOIN company_menu m on rm.menu_id = m.id
+		where ur.is_deleted=0 and ur.user_id = #{userId} and m.company_id = #{companyId}
+	</select>
+	<!-- 获取系统用户列表 -->
+	<select id="getUserList" resultType="map" parameterType="map">
+		SELECT su.id,su.username,su.nickname,sc.company_name as companyName,sd.`name`,
+		su.email,su.mobile,su.`status`,su.type,su.gmt_create as gmtCreate
+		from sys_user su
+		LEFT JOIN sys_company sc ON sc.id=su.company_id
+		LEFT JOIN sys_dept sd ON sd.id=su.dept_id
+		WHERE su.is_deleted='0' AND su.id !=#{superAdmin}
+	</select>
+	<!-- 删除用户 -->
+	<update id="deleteUserById" parameterType="list">
+		update sys_user
+	  	set is_deleted = '1'
+	  	where id in 
+	    <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</update>
+</mapper>

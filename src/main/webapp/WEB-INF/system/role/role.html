@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<title>jeecloud智能云平台</title>
+<!-- Bootstrap 3.3.7 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- layui -->
+<link rel="stylesheet" href="${request.contextPath}/plugin/layui/css/layui.css">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+<!-- Google Font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="stylesheet" href="${request.contextPath}/static/css/style.css">
+</head>
+<body class="layui-layout-body inside-header inside-aside content-body">
+	<div class="layui-body">
+		<div class="layui-fluid">
+			<div class="layui-card">
+				<div class="layui-card-body">
+					<div class="LAY-app-message-btns fixed-table-toolbar" style="margin-bottom: 10px;">
+						<div class="columns-right pull-right" style="margin-top: 12px;">
+							<button class="layui-btn layui-btn-primary layui-btn-sm btn-default" name="commonSearch" title="普通搜索">
+								<i class="fa fa-search" style="font-size: 14px"></i>
+							</button>
+						</div>
+						<div class="bs-bars pull-left">
+							<button class="layui-btn layui-btn-sm"><i class="fa fa-refresh"></i></button>
+			            	<button class="layui-btn layui-btn-sm layui-btn-normal" data-iframe="/sys/menu/toMenuForm" data-title="添加"><i class="fa fa-plus"></i> 添加</button>
+			            	<button class="layui-btn layui-btn-sm layui-btn-danger layui-btn-disabled" disabled="disabled"><i class="fa fa-trash"></i> 删除</button>
+		            	</div>
+		            	<div class="columns columns-right btn-group pull-right" style="margin-top: 12px">
+							<div class="keep-open btn-group" title="列">
+								<button type="button" aria-label="columns" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="height: 30px">
+									<i class="fa fa-th" aria-hidden="true" style="font-size: 14px"></i> <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li role="menuitem"><label><input type="checkbox" lay-skin="primary" data-field="id" value="1" checked="checked"> ID</label></li>
+									<li role="menuitem"><label><input type="checkbox" lay-skin="primary" data-field="username" value="2" checked="checked"> 用户名</label></li>
+									<li role="menuitem"><label><input type="checkbox" lay-skin="primary" data-field="nickname" value="3" checked="checked"> 昵称</label></li>
+									<li role="menuitem"><label><input type="checkbox" lay-skin="primary" data-field="groups_text" value="4" checked="checked"> 分组</label></li>
+									<li role="menuitem"><label><input type="checkbox" lay-skin="primary" data-field="email" value="5" checked="checked"> Email</label></li>
+									<li role="menuitem"><label><input type="checkbox" lay-skin="primary" data-field="status" value="6" checked="checked"> 状态</label></li>
+									<li role="menuitem"><label><input type="checkbox" lay-skin="primary" data-field="logintime" value="7" checked="checked"> 登录时间</label></li>
+									<li role="menuitem"><label><input type="checkbox" lay-skin="primary" data-field="operate" value="8" checked="checked"> 操作</label></li>
+									<li role="menuitem"><label><input type="checkbox" lay-skin="primary" data-field="status" value="6" checked="checked"> 状态</label></li>
+									<li role="menuitem"><label><input type="checkbox" lay-skin="primary" data-field="logintime" value="7" checked="checked"> 登录时间</label></li>
+									<li role="menuitem"><label><input type="checkbox" lay-skin="primary" data-field="operate" value="8" checked="checked"> 操作</label></li>
+								</ul>
+							</div>
+							<div class="export btn-group">
+								<button class="btn btn-default dropdown-toggle" aria-label="export type" title="导出数据" data-toggle="dropdown" type="button" style="height: 30px">
+									<i class="fa fa-share-square-o" aria-hidden="true" style="font-size: 14px"></i> <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li role="menuitem" data-type="json"><a href="javascript:void(0)">JSON</a></li>
+									<li role="menuitem" data-type="xml"><a href="javascript:void(0)">XML</a></li>
+									<li role="menuitem" data-type="csv"><a href="javascript:void(0)">CSV</a></li>
+									<li role="menuitem" data-type="txt"><a href="javascript:void(0)">TXT</a></li>
+									<li role="menuitem" data-type="doc"><a href="javascript:void(0)">MS-Word</a></li>
+									<li role="menuitem" data-type="excel"><a href="javascript:void(0)">MS-Excel</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="pull-right search" style="margin-top: 12px;">
+							<input class="layui-input" type="text" placeholder="搜索">
+						</div>
+		            </div>
+					<table id="table"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
+	<script type="text/javascript" src="${request.contextPath}/static/js/app.js"></script>
+	<script type="text/javascript" src="${request.contextPath}/static/js/system/menu.js"></script>
+</body>
+</html>

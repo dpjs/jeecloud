@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jeecloud.common.dao.system.CompanyMenuDao">
+	<resultMap id="BaseResultMap" type="com.jeecloud.common.entity.system.CompanyMenu">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="company_id" jdbcType="BIGINT" property="companyId" />
+		<result column="parent_id" jdbcType="BIGINT" property="parentId" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="url" jdbcType="VARCHAR" property="url" />
+		<result column="perms" jdbcType="VARCHAR" property="perms" />
+		<result column="type" jdbcType="INTEGER" property="type" />
+		<result column="icon" jdbcType="VARCHAR" property="icon" />
+		<result column="sort" jdbcType="INTEGER" property="sort" />
+		<result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+		<result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+		<result column="gmt_creater" jdbcType="VARCHAR" property="gmtCreater" />
+		<result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+		<result column="gmt_reviser" jdbcType="VARCHAR" property="gmtReviser" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, company_id, parent_id, name, url, perms, type, icon, sort,
+		is_deleted, gmt_create,
+		gmt_creater, gmt_modified, gmt_reviser
+	</sql>
+	<!-- 获取管理员菜单 -->
+	<select id="getUserAllMenuList" resultType="map">
+		select m.id,m.parent_id as parentId,m.`name` as text,m.url,m.icon,m.type,'iframe-tab' as targetType
+		from sys_menu m
+		where m.is_deleted=0 AND m.type BETWEEN 0 AND 1
+		order by m.sort asc
+	</select>
+	<!-- 获取用户菜单 -->
+	<select id="getUserMenuList" resultType="map">
+		select m.id,m.parent_id as parentId,m.`name` as text,m.url,m.icon,m.type,'iframe-tab' as targetType
+		from sys_user_role ur
+		LEFT JOIN sys_role_menu rm on ur.role_id = rm.role_id
+		INNER JOIN company_menu m on rm.menu_id = m.id
+		where ur.is_deleted=0 AND m.is_deleted=0 and ur.user_id = #{userId} AND m.type BETWEEN 0 AND 1
+	</select>
+</mapper>
